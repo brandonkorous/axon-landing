@@ -1,0 +1,65 @@
+---
+title: "Why We Built Voice-First Into Axon"
+date: "2026-02-20"
+excerpt: "How Axon uses Whisper and Piper to make voice a native interaction mode — entirely local."
+author: "Brandon Korous"
+tags: ["voice", "whisper", "piper"]
+color: "secondary"
+---
+
+Every AI product today starts with a text box. We think that's limiting. When you're deep in a problem, the act of typing pulls you out of flow. Speaking doesn't have that cost.
+
+That's why voice isn't a plugin in Axon — it's a core interaction mode, built in from the start.
+
+## How it works
+
+Axon's voice system has two sides:
+
+### Speech-to-text: Whisper
+
+For transcription, Axon uses [faster-whisper](https://github.com/SYSTRAN/faster-whisper), an optimized implementation of OpenAI's Whisper model. It runs entirely on your hardware — no audio ever leaves your machine.
+
+The engine accepts 16-bit PCM and WebM/Opus audio formats, handles streaming input from the browser, and returns transcriptions that feed directly into the conversation.
+
+### Text-to-speech: Piper
+
+For voice output, Axon uses [Piper](https://github.com/rhasspy/piper), a fast, local text-to-speech engine that runs via ONNX models. Voice models are downloaded on demand from Hugging Face (rhasspy/piper-voices).
+
+Each advisor can be assigned a different voice, so your coding advisor sounds different from your writing advisor. You configure this per-agent in the persona YAML:
+
+```yaml
+voice:
+  voice_id: en_US-lessac-medium
+  speed: 1.0
+  engine: piper
+```
+
+## Per-advisor voices
+
+This is one of the details that makes Axon feel different. In a huddle session with multiple advisors, each one speaks with a distinct voice. It's a small thing, but it makes multi-agent conversations feel natural rather than robotic.
+
+The voice catalog lets you browse and preview available voices. When you select one, Axon downloads the model files automatically.
+
+## Privacy by design
+
+We hear the question: why not just use a cloud speech API?
+
+Because the whole point of Axon is that your data stays on your machine. Audio is deeply personal — the words you say, your tone, your ambient environment. We're not comfortable sending that to a third-party server, and we don't think you should be either.
+
+Both Whisper and Piper run locally. Audio is processed in real-time and the raw input is not persisted.
+
+## Optional by design
+
+Voice requires additional dependencies (Whisper, Piper, audio processing libraries), so it's an opt-in feature:
+
+```bash
+pip install axon[voice]
+```
+
+If you don't need voice, you don't pay for it in startup time or resource usage. If you do, it's a single install away.
+
+## When text is better
+
+We're not saying voice should replace text entirely. Writing is better for precise technical input, code snippets, structured data, and situations where you need to be quiet. Axon supports both modes seamlessly in the same conversation.
+
+But for thinking out loud, asking questions, and talking through problems — voice removes friction that you didn't know was there. Try it for a day and see.

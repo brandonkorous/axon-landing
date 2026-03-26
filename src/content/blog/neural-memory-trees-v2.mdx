@@ -1,0 +1,57 @@
+---
+title: "How Axon's Neural Memory Trees Work"
+date: "2026-03-15"
+excerpt: "A deep dive into how Axon organizes, recalls, and learns from your conversations using local LLMs."
+author: "Brandon Korous"
+tags: ["memory", "architecture", "local-llm"]
+color: "primary"
+---
+
+Most AI assistants forget everything the moment you close the tab. Axon doesn't. At the heart of Axon is a memory system we call Neural Memory Trees — a structured, persistent knowledge layer that lets your AI actually remember.
+
+Here's how it works.
+
+## The vault
+
+Axon stores memory as Obsidian-compatible markdown files in what we call a vault. Each advisor gets their own vault directory. Entries are plain markdown with YAML frontmatter — fully readable, editable, and portable. No proprietary database, no black box.
+
+Vaults support wikilinks between entries, forming a graph of relationships. The VaultGraph tracks these connections, so when one memory is retrieved, related context comes with it.
+
+## Recall and learning
+
+The memory system operates in two directions:
+
+### Recall (inbound)
+
+Before each conversation turn, Axon performs a semantic search across the advisor's vault using a local LLM (llama3:8b by default). This surfaces relevant memories and injects them as context — so the reasoning model doesn't need to be told what it already knows about you.
+
+If the local model is unavailable, a deterministic navigator provides keyword-based fallback search. Memory never depends on an external API.
+
+### Learning (outbound)
+
+After each turn, the memory manager extracts insights from the conversation and writes them back to the vault. This happens automatically — you don't need to tell Axon to remember something (though you can with the `/remember` slash command).
+
+## Confidence decay
+
+Not all memories are equally valuable. Axon assigns confidence scores to entries and applies decay over time — roughly 90 days for unvalidated information. Entries that get referenced frequently maintain their confidence. Entries that go stale gradually fade in retrieval priority.
+
+This prevents outdated information from polluting context while keeping frequently useful knowledge sharp.
+
+## Consolidation
+
+Memory consolidation is a periodic process where the local LLM reviews and cleans up vault entries — merging duplicates, resolving contradictions, and archiving low-confidence entries. You can trigger this manually with the `/sleep` slash command.
+
+## Why local LLMs for memory
+
+We deliberately use cheap, local models (via Ollama) for all memory operations — recall, learning, and consolidation. The reasoning model (Claude, GPT, or a larger local model) handles the actual conversation. This keeps memory operations fast and free of API costs.
+
+## Working with memory
+
+Axon exposes several slash commands for direct memory interaction:
+
+- `/remember [text]` — Force-write an entry to the vault
+- `/forget [query]` — Archive matching entries
+- `/recall [query]` — Search memory and surface results
+- `/status` — Show memory stats for the current advisor
+
+Every memory operation is transparent and auditable. Your data lives in markdown files on your filesystem, in a format you can read and edit with any text editor.

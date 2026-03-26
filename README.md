@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Axon Landing Site
 
-## Getting Started
+The marketing and documentation website for [Axon](https://github.com/brandonkorous/axon) — an open-source, self-hosted AI command center.
 
-First, run the development server:
+**Live at [useaxon.dev](https://useaxon.dev)**
+
+## Stack
+
+- [Next.js](https://nextjs.org) 16 (App Router)
+- [Tailwind CSS](https://tailwindcss.com) v4
+- [DaisyUI](https://daisyui.com) v5
+- [MDX](https://mdxjs.com) for blog content via `next-mdx-remote`
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The dev server runs on [localhost:3000](http://localhost:3000) by default.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Route | Description |
+|-------|-------------|
+| `/` | Landing page — hero, features, community stats, docs, blog preview |
+| `/docs` | Getting started guide with installation, configuration, and architecture |
+| `/blog` | Blog listing |
+| `/blog/[slug]` | Individual blog posts (MDX) |
+| `/about` | Mission, differentiators, open-source philosophy |
+| `/changelog` | Release history |
+| `/privacy` | Privacy policy |
+| `/terms` | Terms of service |
 
-## Learn More
+## Blog Content
 
-To learn more about Next.js, take a look at the following resources:
+Blog posts live in `src/content/blog/` as `.mdx` files with frontmatter:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```yaml
+---
+title: "Post Title"
+date: "2026-01-15"
+excerpt: "Short description."
+author: "Axon Team"
+tags: ["tag1", "tag2"]
+color: "primary" # primary | secondary | accent | neutral
+---
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+AGPL-3.0 — see [LICENSE](https://github.com/brandonkorous/axon/blob/main/LICENSE).

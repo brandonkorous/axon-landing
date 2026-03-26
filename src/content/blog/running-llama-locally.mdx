@@ -1,0 +1,95 @@
+---
+title: "Running Local LLMs with Axon via Ollama"
+date: "2026-01-10"
+excerpt: "How to deploy Axon with fully local inference using Ollama and Docker Compose."
+author: "Axon Team"
+tags: ["llm", "ollama", "self-hosted"]
+color: "neutral"
+---
+
+One of Axon's core principles is that your data stays on your hardware. Running a local LLM is the final piece of that puzzle — no API calls to external services, no data leaving your network, complete privacy.
+
+Axon integrates with [Ollama](https://ollama.ai) for local inference. Here's how to set it up.
+
+## Prerequisites
+
+- Docker and Docker Compose installed
+- At least 16GB RAM (32GB recommended for larger models)
+- A CUDA-compatible GPU with 8GB+ VRAM (optional but strongly recommended)
+- The Axon repository cloned locally
+
+## Start Axon with local LLMs
+
+Axon uses Docker Compose profiles to manage optional services. To launch with Ollama:
+
+```bash
+docker compose --profile local-llm up
+```
+
+This starts the Axon backend, frontend, database, and an Ollama container. On first launch, an init service automatically pulls the default models.
+
+## How Axon uses local models
+
+Axon separates its LLM usage into two tiers:
+
+### Navigator (memory operations)
+
+The navigator model handles memory recall, learning, and consolidation. By default, this is `ollama/llama3:8b` — a small, fast model that keeps memory operations cheap and responsive.
+
+### Reasoning (conversations)
+
+The reasoning model handles actual conversations with you. By default, Axon routes this through LiteLLM, which supports Claude, OpenAI, or local models via Ollama. You can set the default with an environment variable:
+
+```bash
+DEFAULT_MODEL=ollama/qwen2.5:14b
+```
+
+Or configure it per-advisor in their persona YAML:
+
+```yaml
+models:
+  reasoning: ollama/qwen2.5:14b
+  navigator: ollama/llama3:8b
+```
+
+## Supported models
+
+Axon works with any model in the Ollama library. Some good starting points:
+
+- **llama3:8b** — Fast, capable general-purpose model. Good for memory operations.
+- **qwen2.5:14b** — Strong reasoning model that runs well on consumer GPUs.
+- **mistral** — Efficient for instruction following.
+- **codellama** — Specialized for code tasks.
+
+The Ollama container pulls models on demand. If you reference a model that isn't downloaded yet, Ollama handles the download automatically.
+
+## Configuration
+
+Axon connects to Ollama via the `OLLAMA_BASE_URL` environment variable, which defaults to `http://ollama:11434` in the Docker Compose setup.
+
+Key environment variables for local LLM configuration:
+
+```bash
+OLLAMA_BASE_URL=http://ollama:11434
+DEFAULT_MODEL=ollama/qwen2.5:14b
+```
+
+## Fallback behavior
+
+If the local model is unavailable (still loading, out of memory, etc.), Axon's memory system falls back to a deterministic navigator that uses keyword-based search. Your conversations won't break — memory recall just becomes less semantically aware until the model is back.
+
+## Fully local vs. hybrid
+
+You can run Axon in three modes:
+
+1. **Fully local** — Both navigator and reasoning models run on Ollama. Zero external API calls.
+2. **Hybrid** — Local navigator (memory) with a cloud reasoning model (Claude, GPT). Best balance of cost and capability.
+3. **Fully cloud** — Both tiers use cloud APIs. Simplest setup, but requires internet and API keys.
+
+Most users start with hybrid — local memory operations keep costs down and data private, while a cloud model handles complex reasoning. As local models improve, going fully local becomes increasingly viable.
+
+## What's next
+
+We're continuing to optimize Axon's local LLM integration — better model management, GPU memory monitoring, and automatic model selection based on available hardware. The goal is to make self-hosted AI as turnkey as possible.
+
+Your intelligence, running on your hardware. That's the promise.
