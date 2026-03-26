@@ -1,0 +1,136 @@
+# Axon — Full Documentation for LLMs
+
+> Open-source, self-hosted AI command center.
+> Website: https://useaxon.dev
+> GitHub: https://github.com/brandonkorous/axon
+> License: AGPL-3.0
+
+---
+
+## Overview
+
+Axon is an AI platform that remembers, listens, and thinks with you. It coordinates specialist advisors around your actual life and work — remembering what matters, delegating to the right expert, and getting smarter over time.
+
+Unlike cloud-dependent AI tools, Axon runs entirely on your own infrastructure. Your data never leaves your servers.
+
+---
+
+## Core Features
+
+### Neural Memory Trees
+
+Axon stores knowledge as Obsidian-compatible markdown files in local vaults. The memory system includes:
+
+- **Vaults**: Organized memory storage per advisor, stored as local markdown files
+- **Recall**: Confidence-scored retrieval of relevant memories during conversations
+- **Learning**: Active extraction of new knowledge from conversations
+- **Confidence Decay**: Memories naturally decay over time unless reinforced
+- **Consolidation**: Automatic merging and summarization of related memories
+- **CLI Commands**: Manage memory trees via command line
+
+### Voice-First Interaction
+
+Talk, don't type. Axon's voice system includes:
+
+- **Speech-to-Text**: Whisper handles transcription
+- **Text-to-Speech**: Piper handles voice synthesis
+- **Per-Advisor Voices**: Each specialist advisor can have their own voice
+- **Natural Conversation**: Designed for fluid, natural interaction patterns
+
+### Specialist Advisors
+
+Organization templates give you curated advisor teams:
+
+- **Startup Board**: Business strategy, technical architecture, marketing, legal
+- **Family Organizer**: Scheduling, meal planning, budgeting, education
+- **Career Coaches**: Resume review, interview prep, skill development
+- Each advisor has their own persona, vault, and expertise
+- Axon routes requests to the right specialist based on context
+
+### Local LLM Support
+
+Zero cloud dependency:
+
+- Run entirely on your hardware via Ollama
+- No API keys required for basic operation
+- Optionally connect to Claude, GPT, or other cloud providers for reasoning
+- Local inference handles memory operations (recall, learning, consolidation)
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Docker and Docker Compose
+- 8 GB+ RAM (16 GB recommended for local LLMs)
+- Ollama (optional, for local inference)
+
+### Quick Start
+
+```bash
+git clone https://github.com/brandonkorous/axon.git
+cd axon
+cp .env.example .env
+docker compose up -d
+```
+
+Then visit http://localhost:3000.
+
+### Configuration
+
+| Variable | Default | Description |
+|---|---|---|
+| DEFAULT_MODEL | anthropic/claude-sonnet-4-20250514 | LLM provider and model |
+| ANTHROPIC_API_KEY | (none) | Required for Claude models |
+| OLLAMA_BASE_URL | http://ollama:11434 | Local LLM endpoint |
+| DB_ENCRYPTION_KEY | (generate with Fernet) | Encrypts OAuth tokens |
+
+---
+
+## Architecture
+
+- **Axon Agent**: Central orchestrator that routes requests to specialist advisors
+- **Memory Layer**: Local LLM (Ollama) handles recall, learning, and consolidation
+- **Advisor SDK**: Build custom specialist advisors with their own personas and vaults
+- **REST & WebSocket API**: Full API for programmatic access
+- **Storage**: Local filesystem with Obsidian-compatible markdown
+
+---
+
+## API
+
+### REST Endpoints
+
+The Axon backend exposes REST endpoints for managing advisors, memory vaults, conversations, and organization templates.
+
+### WebSocket
+
+Real-time streaming for conversations and voice interaction.
+
+### Advisor SDK
+
+Build custom specialist advisors with:
+
+- Custom personas and system prompts
+- Dedicated memory vaults
+- Specialized tool access
+- Per-advisor voice configuration
+
+---
+
+## Release History
+
+- **v0.4.0** (March 2026): Organization templates, multi-advisor routing
+- **v0.3.0** (February 2026): Voice-first interaction, Whisper + Piper integration
+- **v0.2.0** (January 2026): Neural memory trees v2, confidence decay, consolidation
+- **v0.1.0** (December 2025): Initial release, basic chat, single advisor, markdown memory
+
+---
+
+## Community
+
+- GitHub: https://github.com/brandonkorous/axon
+- Blog: https://useaxon.dev/blog
+- Documentation: https://useaxon.dev/docs
+- License: AGPL-3.0 — modifications must be shared when offered as a service

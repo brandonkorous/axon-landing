@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NewsletterForm from "./NewsletterForm";
 
 const columns = [
   {
@@ -82,24 +83,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="flex flex-col gap-3 lg:w-1/4">
-            <h4 className="text-xs font-semibold uppercase tracking-widest opacity-60">
-              Newsletter
-            </h4>
-            <p className="text-xs opacity-70">
-              Stay updated on releases and community news.
-            </p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="you@email.com"
-                className="input input-sm flex-1 rounded-full border-primary-content/20 bg-primary-content/10 text-xs text-primary-content placeholder:text-primary-content/40"
-              />
-              <button className="btn btn-sm rounded-full bg-primary-content text-primary hover:bg-primary-content/90">
-                Subscribe
-              </button>
-            </div>
-          </div>
+          <NewsletterForm />
         </div>
 
         {/* Bottom bar */}

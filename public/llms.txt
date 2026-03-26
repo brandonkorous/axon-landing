@@ -1,0 +1,33 @@
+# Axon
+
+> Open-source, self-hosted AI command center.
+
+Axon is an AI platform that remembers, listens, and thinks with you. It runs entirely on your own infrastructure with no cloud dependency.
+
+## Core Features
+
+- **Neural Memory Trees**: Persistent knowledge stored as Obsidian-compatible markdown files in local vaults. Confidence-scored recall, active learning, and automatic consolidation.
+- **Voice-First Interaction**: Speech-to-text via Whisper, text-to-speech via Piper. Each advisor can have their own voice.
+- **Specialist Advisors**: Organization templates provide curated advisor teams (startup board, family organizer, career coaches) with unique personas, vaults, and expertise.
+- **Local LLM Support**: Run entirely on your hardware via Ollama. No API keys required. Optionally connect to Claude, GPT, or other providers.
+
+## Links
+
+- Website: https://useaxon.dev
+- Documentation: https://useaxon.dev/docs
+- Blog: https://useaxon.dev/blog
+- GitHub: https://github.com/brandonkorous/axon
+- License: AGPL-3.0
+
+## Technical Details
+
+- Self-hosted on your own infrastructure
+- Local inference via Ollama for memory operations
+- Flexible model provider support (Anthropic, OpenAI, local)
+- Obsidian-compatible markdown memory vaults
+- REST and WebSocket API
+- Advisor SDK for building custom specialists
+
+## llms-full.txt
+
+For detailed documentation: https://useaxon.dev/llms-full.txt
