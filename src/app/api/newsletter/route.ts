@@ -22,9 +22,8 @@ export async function POST(request: Request) {
         }
 
         const apiKey = process.env.RESEND_API_KEY;
-        const audienceId = process.env.RESEND_AUDIENCE_ID;
 
-        if (!apiKey || !audienceId) {
+        if (!apiKey) {
             return NextResponse.json(
                 { error: "Newsletter is not configured yet." },
                 { status: 500 },
@@ -35,7 +34,6 @@ export async function POST(request: Request) {
 
         const { error } = await resend.contacts.create({
             email: trimmed,
-            audienceId,
         });
 
         if (error) {
