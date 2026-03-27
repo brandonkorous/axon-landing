@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import AppFrame from "./AppFrame";
 
 export default function Hero() {
   return (
@@ -33,7 +33,7 @@ export default function Hero() {
           <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-secondary/30 bg-secondary/5 px-5 py-2 text-sm text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-4 w-4 shrink-0"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -46,22 +46,17 @@ export default function Hero() {
               />
             </svg>
             <span>
-              Your data never leaves your servers — 100% local, AGPL licensed, OSS forever
+              Your data never leaves your servers — 100% local, AGPL licensed,
+              OSS forever
             </span>
           </div>
         </div>
 
         {/* Dashboard screenshot */}
-        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-lg border border-base-300/50">
-          <Image
-            src="/axon-dashboard.png"
-            alt="Axon Command Center dashboard showing agents, tasks, and audit log"
-            width={1920}
-            height={1080}
-            className="w-full"
-            priority
-          />
-        </div>
+        <AppFrame
+          src="/axon-dashboard.png"
+          alt="Axon Command Center dashboard showing agents, tasks, and audit log"
+        />
       </div>
     </section>
   );
