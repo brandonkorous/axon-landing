@@ -10,10 +10,10 @@ spec:
     ingressClassName: nginx
     tls:
         - hosts:
-              - __DOMAIN__
+              - useaxon.dev
           secretName: axon-landing-tls
     rules:
-        - host: __DOMAIN__
+        - host: useaxon.dev
           http:
               paths:
                   - path: /
