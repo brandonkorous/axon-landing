@@ -10,6 +10,7 @@ Axon is an AI platform that remembers, listens, and thinks with you. It runs ent
 - **Voice-First Interaction**: Speech-to-text via Whisper, text-to-speech via Piper. Each advisor can have their own voice.
 - **Specialist Advisors**: Organization templates provide curated advisor teams (startup board, family organizer, career coaches) with unique personas, vaults, and expertise.
 - **Local LLM Support**: Run entirely on your hardware via Ollama. No API keys required. Optionally connect to Claude, GPT, or other providers.
+- **Platform Integrations**: Slack, Microsoft Teams, Zoom, and Discord — advisors meet your team where they already work. All integrations run on your infrastructure.
 
 ## Links
 
@@ -27,6 +28,7 @@ Axon is an AI platform that remembers, listens, and thinks with you. It runs ent
 - Obsidian-compatible markdown memory vaults
 - REST and WebSocket API
 - Advisor SDK for building custom specialists
+- Integrates with Slack, Microsoft Teams, Zoom, and Discord
 
 ## llms-full.txt
 

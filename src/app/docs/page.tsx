@@ -2,9 +2,16 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Documentation — Axon",
+    title: "Documentation",
     description:
         "Get started with Axon in under five minutes. Installation, configuration, and architecture overview.",
+    alternates: { canonical: "/docs" },
+    openGraph: {
+        title: "Documentation — Axon",
+        description:
+            "Get started with Axon in under five minutes. Installation, configuration, and architecture overview.",
+        url: "/docs",
+    },
 };
 
 const docSections = [

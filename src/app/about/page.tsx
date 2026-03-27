@@ -2,9 +2,16 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "About — Axon",
+    title: "About",
     description:
         "Why Axon exists: a self-hosted, open-source AI command center that keeps your data on your hardware.",
+    alternates: { canonical: "/about" },
+    openGraph: {
+        title: "About — Axon",
+        description:
+            "Why Axon exists: a self-hosted, open-source AI command center that keeps your data on your hardware.",
+        url: "/about",
+    },
 };
 
 const differentiators = [

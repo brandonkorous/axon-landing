@@ -56,6 +56,17 @@ Zero cloud dependency:
 - Optionally connect to Claude, GPT, or other cloud providers for reasoning
 - Local inference handles memory operations (recall, learning, consolidation)
 
+### Platform Integrations
+
+Axon advisors plug directly into the tools your team already uses:
+
+- **Slack**: Summon advisors in any channel. Get proactive insights, task updates, and decision summaries without leaving your workspace.
+- **Microsoft Teams**: Bring AI advisors into your Teams channels. Surface decisions, action items, and briefings where your organization already collaborates.
+- **Zoom**: AI advisors join your meetings as silent participants. Get real-time analysis, meeting summaries, and follow-up action items automatically.
+- **Discord**: Deploy advisors to your Discord server. Community managers and dev teams get AI-powered insights right in their existing channels.
+
+All integrations run on your infrastructure. Your conversations never leave your network.
+
 ---
 
 ## Getting Started
@@ -95,6 +106,7 @@ Then visit http://localhost:3000.
 - **Advisor SDK**: Build custom specialist advisors with their own personas and vaults
 - **REST & WebSocket API**: Full API for programmatic access
 - **Storage**: Local filesystem with Obsidian-compatible markdown
+- **Integrations**: Slack, Teams, Zoom, Discord connectors run within your infrastructure
 
 ---
 
@@ -121,7 +133,7 @@ Build custom specialist advisors with:
 
 ## Release History
 
-- **v0.4.0** (March 2026): Organization templates, multi-advisor routing
+- **v0.4.0** (March 2026): Organization templates, multi-advisor routing, Discord bot integration
 - **v0.3.0** (February 2026): Voice-first interaction, Whisper + Piper integration
 - **v0.2.0** (January 2026): Neural memory trees v2, confidence decay, consolidation
 - **v0.1.0** (December 2025): Initial release, basic chat, single advisor, markdown memory

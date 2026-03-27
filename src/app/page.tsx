@@ -1,5 +1,6 @@
 import Hero from "./components/Hero";
 import Features from "./components/Features";
+import Integrations from "./components/Integrations";
 import Showcase from "./components/Showcase";
 import Community from "./components/Community";
 import Documentation from "./components/Documentation";
@@ -10,6 +11,7 @@ export default function Home() {
         <>
             <Hero />
             <Features />
+            <Integrations />
             <Showcase />
             <Community />
             <Documentation />

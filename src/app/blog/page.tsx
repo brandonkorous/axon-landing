@@ -4,8 +4,14 @@ import { colorMap } from "@/lib/colors";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Blog — Axon",
-    description: "Insights and updates from the Axon team.",
+    title: "Blog",
+    description: "Engineering deep-dives, product updates, and the thinking behind Axon.",
+    alternates: { canonical: "/blog" },
+    openGraph: {
+        title: "Blog — Axon",
+        description: "Engineering deep-dives, product updates, and the thinking behind Axon.",
+        url: "/blog",
+    },
 };
 
 export default function BlogPage() {

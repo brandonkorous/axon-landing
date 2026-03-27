@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy — Axon",
+    title: "Privacy Policy",
     description: "How Axon handles your data on the marketing site and in the self-hosted software.",
+    alternates: { canonical: "/privacy" },
+    robots: { index: true, follow: true },
 };
 
 export default function PrivacyPage() {

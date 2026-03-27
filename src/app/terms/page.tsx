@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Terms of Service — Axon",
+    title: "Terms of Service",
     description: "Terms governing use of the Axon website and open-source software.",
+    alternates: { canonical: "/terms" },
+    robots: { index: true, follow: true },
 };
 
 export default function TermsPage() {

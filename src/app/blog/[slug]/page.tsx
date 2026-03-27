@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { colorMap } from "@/lib/colors";
+import JsonLd from "../../components/JsonLd";
 import type { Metadata } from "next";
 
 interface Props {
@@ -17,9 +18,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
     const post = getPostBySlug(slug);
     if (!post) return {};
+
+    const url = `/blog/${slug}`;
+
     return {
-        title: `${post.title} — Axon Blog`,
+        title: post.title,
         description: post.excerpt,
+        alternates: { canonical: url },
+        openGraph: {
+            title: `${post.title} — Axon Blog`,
+            description: post.excerpt,
+            url,
+            type: "article",
+            publishedTime: new Date(post.date).toISOString(),
+            authors: [post.author],
+            tags: post.tags,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.excerpt,
+        },
     };
 }
 
@@ -28,8 +47,36 @@ export default async function BlogPostPage({ params }: Props) {
     const post = getPostBySlug(slug);
     if (!post) notFound();
 
+    const blogPostingJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        datePublished: new Date(post.date).toISOString(),
+        author: { "@type": "Person", name: post.author },
+        publisher: {
+            "@type": "Organization",
+            name: "Axon",
+            url: "https://useaxon.dev",
+        },
+        mainEntityOfPage: `https://useaxon.dev/blog/${slug}`,
+        keywords: post.tags.join(", "),
+    };
+
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://useaxon.dev" },
+            { "@type": "ListItem", position: 2, name: "Blog", item: "https://useaxon.dev/blog" },
+            { "@type": "ListItem", position: 3, name: post.title, item: `https://useaxon.dev/blog/${slug}` },
+        ],
+    };
+
     return (
         <div className="mx-auto max-w-3xl px-6 py-16 lg:py-24">
+            <JsonLd data={blogPostingJsonLd} />
+            <JsonLd data={breadcrumbJsonLd} />
             {/* Breadcrumb */}
             <div className="breadcrumbs mb-8 text-sm">
                 <ul>

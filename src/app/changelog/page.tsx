@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Changelog — Axon",
+    title: "Changelog",
     description: "Release notes and updates as Axon evolves.",
+    alternates: { canonical: "/changelog" },
+    openGraph: {
+        title: "Changelog — Axon",
+        description: "Release notes and updates as Axon evolves.",
+        url: "/changelog",
+    },
 };
 
 interface Change {

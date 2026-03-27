@@ -14,7 +14,8 @@ export default function Hero() {
             AI that remembers, listens, and thinks with you.
           </h1>
           <p className="max-w-md text-base leading-relaxed text-base-content/60">
-            Neural memory trees, voice-first interaction, specialist advisors.
+            Neural memory trees, voice-first interaction, specialist advisors —
+            integrated with Slack, Teams, Zoom, and Discord.
             All self-hosted, all yours.
           </p>
           <div className="flex items-center gap-4">
