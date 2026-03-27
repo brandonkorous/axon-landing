@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: axon-landing
+    namespace: axon
+    annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+spec:
+    ingressClassName: nginx
+    tls:
+        - hosts:
+              - __DOMAIN__
+          secretName: axon-landing-tls
+    rules:
+        - host: __DOMAIN__
+          http:
+              paths:
+                  - path: /
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: axon-landing
+                            port:
+                                number: 80
