@@ -41,9 +41,9 @@
     name: 'axon-dark';
     default: false;
     color-scheme: dark;
-    --color-base-100: oklch(20% 0.008 55);
-    --color-base-200: oklch(24% 0.01 55);
-    --color-base-300: oklch(29% 0.012 55);
+    --color-base-100: oklch(17% 0.002 80);
+    --color-base-200: oklch(21% 0.003 80);
+    --color-base-300: oklch(26% 0.004 80);
     --color-base-content: oklch(90% 0.015 80);
     --color-primary: oklch(68% 0.07 190);
     --color-primary-content: oklch(18% 0.01 190);
@@ -51,8 +51,8 @@
     --color-secondary-content: oklch(18% 0.01 40);
     --color-accent: oklch(65% 0.06 102);
     --color-accent-content: oklch(18% 0.01 102);
-    --color-neutral: oklch(85% 0.01 70);
-    --color-neutral-content: oklch(20% 0.008 55);
+    --color-neutral: oklch(32% 0.006 80);
+    --color-neutral-content: oklch(88% 0.01 80);
     --color-info: oklch(68% 0.07 190);
     --color-info-content: oklch(18% 0.01 190);
     --color-success: oklch(65% 0.06 100);
