@@ -25,7 +25,7 @@ export default function AppFrame({ src, alt }: AppFrameProps) {
   return (
     <>
       {/* Inline preview */}
-      <div className="mx-auto max-w-3xl">
+      <div>
         <button
           type="button"
           onClick={() => setOpen(true)}
