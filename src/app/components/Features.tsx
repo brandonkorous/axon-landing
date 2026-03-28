@@ -60,7 +60,7 @@ export default function Features() {
               Unlock the Power of Axon
             </h2>
           </div>
-          <Link href="#features" className="btn btn-primary rounded-full btn-sm">
+          <Link href="/features" className="btn btn-primary rounded-full btn-sm">
             Explore Features
           </Link>
         </div>
