@@ -198,14 +198,14 @@ const featureGroups = [
         color: "neutral",
         features: [
             {
-                title: "Autonomous Runners",
+                title: "Specialist Workers",
                 description:
-                    "Agents can spawn worker processes that execute code on your host machine via Claude CLI. Real autonomous task execution with full monitoring.",
+                    "Spawn sandboxed worker agents with expert profiles for Python, Fastify, Next.js, Vite+React, .NET, and more — auto-detected from your codebase.",
                 details: [
-                    "Runner host manages worker subprocesses with lifecycle control",
-                    "Docker sandbox support for isolated, secure execution",
-                    "Real-time worker monitoring: status, logs, and performance",
-                    "Claude Bridge authenticates workers with your API and executes tasks",
+                    "8 sandbox environments: code, browser, data science, ML, documents, media, and full",
+                    "Docker containers (local) or Kubernetes pods (production) — same interface",
+                    "Pre-built images from GitHub Container Registry, no manual setup",
+                    "Real-time worker monitoring: status, logs, build progress streaming",
                 ],
                 icon: (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -258,8 +258,8 @@ const featureGroups = [
                 details: [
                     "SQLite by default, PostgreSQL optional for production",
                     "AES encryption for all stored credentials at rest",
-                    "Docker deployment with network isolation for workers",
-                    "Zero external dependencies when running fully local",
+                    "Docker Compose for local dev, Kubernetes for production scale",
+                    "Zero external dependencies when running fully local with Ollama",
                 ],
                 icon: (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
