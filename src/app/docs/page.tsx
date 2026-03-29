@@ -84,37 +84,71 @@ export default function DocsPage() {
                 <h2 className="mb-4 font-[family-name:var(--font-display)] text-xl font-bold tracking-tight">
                     Quick Start
                 </h2>
-                <div className="rounded-2xl bg-neutral p-6 text-neutral-content">
-                    <span className="mb-4 block text-[10px] font-semibold uppercase tracking-widest text-primary">
-                        Terminal
-                    </span>
-                    <div className="space-y-2 font-mono text-sm leading-loose">
-                        <p>
-                            <span className="text-primary">$</span> git clone https://github.com/brandonkorous/axon.git
-                        </p>
-                        <p>
-                            <span className="text-primary">$</span> cd axon
-                        </p>
-                        <p>
-                            <span className="text-primary">$</span> cp .env.example .env
-                        </p>
-                        <p>
-                            <span className="text-primary">$</span> docker compose up
-                        </p>
+
+                {/* Option A: CLI */}
+                <div className="mb-6">
+                    <h3 className="mb-2 text-sm font-bold">
+                        Option A: Axon CLI
+                        <span className="ml-2 text-[10px] font-semibold uppercase tracking-widest text-primary">
+                            Recommended
+                        </span>
+                    </h3>
+                    <p className="mb-3 text-sm text-base-content/60">
+                        The CLI detects your system, walks you through LLM
+                        provider setup, and recommends models based on your
+                        hardware.
+                    </p>
+                    <div className="rounded-2xl bg-neutral p-6 text-neutral-content">
+                        <span className="mb-4 block text-[10px] font-semibold uppercase tracking-widest text-primary">
+                            Terminal
+                        </span>
+                        <div className="space-y-2 font-mono text-sm leading-loose">
+                            <p>
+                                <span className="text-primary">$</span> curl -sS https://get.useaxon.dev | sh
+                            </p>
+                            <p>
+                                <span className="text-primary">$</span> axon init my-workspace
+                            </p>
+                            <p>
+                                <span className="text-primary">$</span> cd my-workspace && axon start
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div className="mt-4 space-y-2 text-sm text-base-content/60">
-                    <p>
-                        <strong className="text-base-content">Clone</strong> the repository and copy the example environment file.
-                        Add your API keys to <code className="font-mono text-xs">.env</code>, then start everything with Docker Compose.
-                    </p>
-                    <p>
-                        The frontend will be available at{" "}
-                        <code className="font-mono text-xs">localhost:3000</code> and the
-                        backend API at{" "}
-                        <code className="font-mono text-xs">localhost:8000</code>.
+
+                {/* Option B: Manual */}
+                <div>
+                    <h3 className="mb-2 text-sm font-bold">
+                        Option B: Manual Setup
+                    </h3>
+                    <div className="rounded-2xl bg-neutral p-6 text-neutral-content">
+                        <span className="mb-4 block text-[10px] font-semibold uppercase tracking-widest text-primary">
+                            Terminal
+                        </span>
+                        <div className="space-y-2 font-mono text-sm leading-loose">
+                            <p>
+                                <span className="text-primary">$</span> git clone https://github.com/brandonkorous/axon.git
+                            </p>
+                            <p>
+                                <span className="text-primary">$</span> cd axon && cp .env.example .env
+                            </p>
+                            <p>
+                                <span className="text-primary">$</span> docker compose up
+                            </p>
+                        </div>
+                    </div>
+                    <p className="mt-3 text-sm text-base-content/60">
+                        Edit <code className="font-mono text-xs">.env</code> with
+                        your API keys, then start with Docker Compose.
                     </p>
                 </div>
+
+                <p className="mt-4 text-sm text-base-content/60">
+                    The frontend will be available at{" "}
+                    <code className="font-mono text-xs">localhost:3000</code> and
+                    the backend API at{" "}
+                    <code className="font-mono text-xs">localhost:8000</code>.
+                </p>
             </div>
 
             {/* Prerequisites */}
@@ -129,17 +163,105 @@ export default function DocsPage() {
                     </li>
                     <li className="flex items-start gap-2">
                         <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                        At least 8 GB RAM (16 GB+ recommended for local LLMs)
-                    </li>
-                    <li className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                         An API key for your preferred LLM provider (Anthropic, OpenAI) — or Ollama for fully local inference
                     </li>
-                    <li className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                        CUDA-compatible GPU with 8 GB+ VRAM (optional, for local models)
-                    </li>
                 </ul>
+
+                {/* Hardware tiers */}
+                <div className="mt-6">
+                    <h3 className="mb-3 text-sm font-bold">
+                        System Requirements
+                    </h3>
+                    <div className="overflow-x-auto rounded-xl border border-base-300/50">
+                        <table className="table table-sm">
+                            <thead>
+                                <tr className="border-base-300/50">
+                                    <th className="text-[10px] font-semibold uppercase tracking-widest text-base-content/40" />
+                                    <th className="text-[10px] font-semibold uppercase tracking-widest text-base-content/40">
+                                        Cloud LLMs (API)
+                                    </th>
+                                    <th className="text-[10px] font-semibold uppercase tracking-widest text-base-content/40">
+                                        Local LLMs (Ollama)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-xs">
+                                <tr className="border-base-300/50">
+                                    <td className="font-medium">RAM</td>
+                                    <td className="text-base-content/60">4 GB minimum</td>
+                                    <td className="text-base-content/60">16 GB min, 32 GB+ recommended</td>
+                                </tr>
+                                <tr className="border-base-300/50">
+                                    <td className="font-medium">Disk</td>
+                                    <td className="text-base-content/60">2 GB</td>
+                                    <td className="text-base-content/60">10–50 GB (depends on models)</td>
+                                </tr>
+                                <tr className="border-base-300/50">
+                                    <td className="font-medium">GPU</td>
+                                    <td className="text-base-content/60">Not needed</td>
+                                    <td className="text-base-content/60">CUDA GPU with 8 GB+ VRAM recommended</td>
+                                </tr>
+                                <tr className="border-base-300/50">
+                                    <td className="font-medium">API Key</td>
+                                    <td className="text-base-content/60">Anthropic or OpenAI</td>
+                                    <td className="text-base-content/60">Not needed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {/* Model sizing guide */}
+                <div className="mt-6">
+                    <h3 className="mb-3 text-sm font-bold">
+                        Local LLM Model Sizing
+                    </h3>
+                    <div className="overflow-x-auto rounded-xl border border-base-300/50">
+                        <table className="table table-sm">
+                            <thead>
+                                <tr className="border-base-300/50">
+                                    <th className="text-[10px] font-semibold uppercase tracking-widest text-base-content/40">
+                                        Your Hardware
+                                    </th>
+                                    <th className="text-[10px] font-semibold uppercase tracking-widest text-base-content/40">
+                                        Recommended Models
+                                    </th>
+                                    <th className="text-[10px] font-semibold uppercase tracking-widest text-base-content/40">
+                                        Download Size
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-xs">
+                                <tr className="border-base-300/50">
+                                    <td className="text-base-content/60">8 GB RAM, no GPU</td>
+                                    <td className="font-mono text-base-content/60">llama3:8b, phi4-mini</td>
+                                    <td className="text-base-content/60">3–5 GB</td>
+                                </tr>
+                                <tr className="border-base-300/50">
+                                    <td className="text-base-content/60">16 GB RAM or 6 GB+ VRAM</td>
+                                    <td className="font-mono text-base-content/60">qwen2.5:7b, mistral:7b</td>
+                                    <td className="text-base-content/60">4–5 GB</td>
+                                </tr>
+                                <tr className="border-base-300/50">
+                                    <td className="text-base-content/60">32 GB RAM or 8 GB+ VRAM</td>
+                                    <td className="font-mono text-base-content/60">qwen2.5:14b, mistral-small</td>
+                                    <td className="text-base-content/60">9–13 GB</td>
+                                </tr>
+                                <tr className="border-base-300/50">
+                                    <td className="text-base-content/60">48 GB+ RAM or 12 GB+ VRAM</td>
+                                    <td className="font-mono text-base-content/60">qwen2.5:32b, llama3.1:70b</td>
+                                    <td className="text-base-content/60">20–40 GB</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p className="mt-3 text-xs text-base-content/50">
+                        Not sure what your system can handle? Run{" "}
+                        <code className="font-mono">axon doctor</code> after
+                        installing — it detects your hardware and recommends
+                        models automatically.
+                    </p>
+                </div>
             </div>
 
             {/* First Steps */}
