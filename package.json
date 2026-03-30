@@ -6,12 +6,22 @@
         "dev": "next dev --port 3005",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint"
+        "lint": "eslint",
+        "remotion:studio": "npx remotion studio src/remotion/index.ts",
+        "remotion:render": "npx remotion render src/remotion/index.ts AxonShowcase out/axon-showcase.mp4",
+        "remotion:render:walkthrough": "npx remotion render src/remotion/index.ts AxonWalkthrough out/axon-walkthrough.mp4",
+        "remotion:render:demo": "npx remotion render src/remotion/index.ts AxonDemo out/axon-demo.mp4",
+        "remotion:record": "node scripts/record-demo.mjs",
+        "remotion:render:logo": "npx remotion render src/remotion/index.ts LogoAnimation out/logo-animation.mp4"
     },
     "dependencies": {
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",
         "@next/mdx": "^16.2.1",
+        "@remotion/cli": "^4.0.441",
+        "@remotion/media": "4.0.441",
+        "@remotion/player": "^4.0.441",
+        "@remotion/transitions": "4.0.441",
         "@tailwindcss/typography": "^0.5.19",
         "daisyui": "^5.5.19",
         "gray-matter": "^4.0.3",
@@ -19,6 +29,7 @@
         "next-mdx-remote": "^6.0.0",
         "react": "19.2.4",
         "react-dom": "19.2.4",
+        "remotion": "^4.0.441",
         "resend": "^6.9.4"
     },
     "devDependencies": {
@@ -29,6 +40,7 @@
         "babel-plugin-react-compiler": "1.0.0",
         "eslint": "^9",
         "eslint-config-next": "16.2.1",
+        "playwright": "^1.58.2",
         "tailwindcss": "^4",
         "typescript": "^5"
     }
