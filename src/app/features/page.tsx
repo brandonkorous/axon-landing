@@ -4,12 +4,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Features",
     description:
-        "Everything Axon can do: multi-agent orchestration, neural memory trees, voice-first interaction, structured reasoning, autonomous runners, and more.",
+        "Everything Axon can do: multi-agent orchestration, neural memory trees, voice-first interaction, structured reasoning, plugin-based execution, and more.",
     alternates: { canonical: "/features" },
     openGraph: {
         title: "Features — Axon",
         description:
-            "Everything Axon can do: multi-agent orchestration, neural memory trees, voice-first interaction, structured reasoning, autonomous runners, and more.",
+            "Everything Axon can do: multi-agent orchestration, neural memory trees, voice-first interaction, structured reasoning, plugin-based execution, and more.",
         url: "/features",
     },
 };
@@ -178,7 +178,7 @@ const featureGroups = [
             {
                 title: "Command Center Dashboard",
                 description:
-                    "A unified interface for managing your entire AI team. Active agents, pending decisions, action items, inbox, vault health — all in one view.",
+                    "A unified interface for managing your entire AI team. Active agents, pending decisions, tasks, vault health — all in one view.",
                 details: [
                     "Kanban-style task board with drag-and-drop status management",
                     "Visual vault explorer with graph-based relationship browsing",
@@ -198,14 +198,14 @@ const featureGroups = [
         color: "neutral",
         features: [
             {
-                title: "Specialist Workers",
+                title: "Shell Access & Sandboxes",
                 description:
-                    "Spawn sandboxed worker agents with expert profiles for Python, Fastify, Next.js, Vite+React, .NET, and more — auto-detected from your codebase.",
+                    "Grant agents host filesystem access or containerized execution via configurable plugins. Allowlist specific directories and executables per agent.",
                 details: [
-                    "8 sandbox environments: code, browser, data science, ML, documents, media, and full",
-                    "Docker containers (local) or Kubernetes pods (production) — same interface",
+                    "Shell Access plugin: scoped host filesystem + executable allowlist (high trust, prominent warnings)",
+                    "Sandbox plugin: same interface inside Docker containers or Kubernetes pods (lower trust)",
+                    "8 sandbox images: code, browser, data science, ML, documents, media, and full",
                     "Pre-built images from GitHub Container Registry, no manual setup",
-                    "Real-time worker monitoring: status, logs, build progress streaming",
                 ],
                 icon: (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -216,11 +216,11 @@ const featureGroups = [
             {
                 title: "Proactive Scheduling",
                 description:
-                    "A background heartbeat lets advisors check their inbox, work on tasks, and review knowledge without being prompted.",
+                    "A background heartbeat lets advisors pick up pending tasks and review completed work without being prompted.",
                 details: [
+                    "Two triggers: pick up pending tasks, review done tasks",
+                    "Automatic task completion detection and creator notification",
                     "Configurable intervals: frequent, hourly, daily, weekly",
-                    "Built-in actions: check inbox, work on tasks, review knowledge",
-                    "Automatic task completion detection and result delivery",
                     "Approval workflows route decisions to you via Slack, Teams, or Discord",
                 ],
                 icon: (
@@ -288,9 +288,9 @@ const featureGroups = [
                 description:
                     "Extend your advisors with custom capabilities. A plugin system for new tools and a skills system for specialized workflows — no core code changes needed.",
                 details: [
+                    "Shell access and sandbox plugins for agent execution capabilities",
+                    "Plugin architecture with registry, per-agent configuration, and discovery",
                     "10 built-in skills: brainstorming, code review, debugging, decision analysis, and more",
-                    "Plugin architecture with registry, discovery, and YAML configuration",
-                    "Web research plugin included out of the box",
                     "Create custom plugins and skills directly from the UI",
                 ],
                 icon: (
@@ -474,7 +474,7 @@ export default function FeaturesPage() {
                             {
                                 title: "Tasks",
                                 description:
-                                    "Create, assign, and track tasks with priority levels (P0-P3), due dates, and status workflows from pending through execution to done.",
+                                    "Create, assign, and track tasks with parent-child relationships, priority levels (P0-P3), and a clean lifecycle: pending, in progress, blocked, done, accepted.",
                             },
                             {
                                 title: "Issues",
@@ -489,7 +489,7 @@ export default function FeaturesPage() {
                             {
                                 title: "Achievements",
                                 description:
-                                    "Record milestones, shipped features, and notable outcomes. Track impact over time with a timeline of wins.",
+                                    "Auto-generated when parent tasks with children reach accepted. LLM-written celebratory summaries of what was accomplished and why it matters.",
                             },
                         ].map((item) => (
                             <div
