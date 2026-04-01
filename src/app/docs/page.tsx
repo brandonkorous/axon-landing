@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import InstallTabs from "../components/InstallTabs";
 
 export const metadata: Metadata = {
     title: "Documentation",
@@ -96,24 +97,9 @@ export default function DocsPage() {
                     <p className="mb-3 text-sm text-base-content/60">
                         The CLI detects your system, walks you through LLM
                         provider setup, and recommends models based on your
-                        hardware.
+                        hardware. Works on macOS, Linux, and Windows.
                     </p>
-                    <div className="rounded-2xl bg-neutral p-6 text-neutral-content">
-                        <span className="mb-4 block text-[10px] font-semibold uppercase tracking-widest text-primary">
-                            Terminal
-                        </span>
-                        <div className="space-y-2 font-mono text-sm leading-loose">
-                            <p>
-                                <span className="text-primary">$</span> curl -sS https://get.useaxon.dev | sh
-                            </p>
-                            <p>
-                                <span className="text-primary">$</span> axon init my-workspace
-                            </p>
-                            <p>
-                                <span className="text-primary">$</span> cd my-workspace && axon start
-                            </p>
-                        </div>
-                    </div>
+                    <InstallTabs />
                 </div>
 
                 {/* Option B: Manual */}

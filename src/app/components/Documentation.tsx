@@ -1,4 +1,5 @@
 import Link from "next/link";
+import InstallTerminal from "./InstallTerminal";
 
 export default function Documentation() {
   return (
@@ -25,30 +26,7 @@ export default function Documentation() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* Terminal card */}
-          <div className="card bg-neutral text-neutral-content shadow-none">
-            <div className="card-body gap-4 p-6">
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-primary">
-                Terminal
-              </span>
-              <div className="rounded-lg bg-black/20 p-4 font-mono text-xs leading-loose">
-                <p>
-                  <span className="text-primary">$</span> curl -sS get.useaxon.dev | sh
-                </p>
-                <p>
-                  <span className="text-primary">$</span> axon init my-workspace
-                </p>
-                <p>
-                  <span className="text-primary">$</span> axon start
-                </p>
-              </div>
-            </div>
-            <div className="card-body gap-1 border-t border-neutral-content/10 p-6">
-              <h3 className="text-sm font-bold">Quick Start</h3>
-              <p className="text-xs leading-relaxed opacity-60">
-                Up and running in three commands.
-              </p>
-            </div>
-          </div>
+          <InstallTerminal />
 
           {/* Docs reference card */}
           <div className="card bg-base-200 shadow-none border border-base-300/50">
