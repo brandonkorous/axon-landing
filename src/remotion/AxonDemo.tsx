@@ -180,7 +180,6 @@ export const AxonDemo = () => {
                 from={label.startFrame}
                 durationInFrames={label.durationFrames}
                 layout="none"
-                premountFor={fps * 0.3}
               >
                 <FloatingLabel label={label} />
               </Sequence>
